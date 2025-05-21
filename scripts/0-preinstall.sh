@@ -79,6 +79,8 @@ createsubvolumes () {
     btrfs subvolume create /mnt/@var
     btrfs subvolume create /mnt/@tmp
     btrfs subvolume create /mnt/@.snapshots
+    btrfs subvolume create /mnt/@root
+    btrfs subvolume create /mnt/@srv
 }
 
 # @description Mount all btrfs subvolumes after root has been mounted.
@@ -87,6 +89,8 @@ mountallsubvol () {
     mount -o ${MOUNT_OPTIONS},subvol=@tmp ${partition3} /mnt/tmp
     mount -o ${MOUNT_OPTIONS},subvol=@var ${partition3} /mnt/var
     mount -o ${MOUNT_OPTIONS},subvol=@.snapshots ${partition3} /mnt/.snapshots
+    mount -o ${MOUNT_OPTIONS},subvol=@root ${partition3} /mnt/root
+    mount -o ${MOUNT_OPTIONS},subvol=@srv ${partition3} /mnt/srv
 }
 
 # @description BTRFS subvolulme creation and mounting. 
